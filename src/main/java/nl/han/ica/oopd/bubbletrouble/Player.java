@@ -7,7 +7,7 @@ public class Player extends AnimatedSpriteObject{
 	private BubbleTrouble bubbletrouble;
 	
 	public Player(BubbleTrouble bubbletrouble) {
-		super(new Sprite("src/main/resources/bubble-trouble/player.png"), 2);
+		super(new Sprite(bubbletrouble.MEDIA_URL.concat("player.png")), 3);
 		this.bubbletrouble = bubbletrouble;
 	}
 

@@ -20,7 +20,6 @@ public class BubbleTrouble extends GameEngine {
 		BubbleTrouble bubbleTrouble = new BubbleTrouble();
 		
 		PApplet.runSketch(processingArgs, bubbleTrouble);
-
 	}
 
 	@Override
@@ -60,7 +59,8 @@ public class BubbleTrouble extends GameEngine {
 	}
 	
 	private void createObjects() {
-		
+		player = new Player(this);
+		addGameObject(player, 200, 200);
 	}
 	
 }
