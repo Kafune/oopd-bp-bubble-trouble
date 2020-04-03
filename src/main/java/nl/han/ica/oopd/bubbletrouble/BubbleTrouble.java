@@ -9,6 +9,8 @@ import processing.core.PApplet;
 public class BubbleTrouble extends GameEngine {
 	
 	private TextObject dashboardText;
+	private Bubble bubble;
+	private Player player;
 	
 	public static void main(String[] args) {
 		PApplet.main(new String[] { "nl.han.ica.oopd.bubbletrouble.BubbleTrouble" });
@@ -39,6 +41,10 @@ public class BubbleTrouble extends GameEngine {
 		view.setBackground(loadImage("src/main/resources/bubble-trouble/startscreen.jpg"));
 		setView(view);
 		size(screenWidth, screenHeight);
+	}
+	
+	private void refreshDashboardText() {
+		dashboardText.setText("TODO"); //Score refresher.
 	}
 	
 }
