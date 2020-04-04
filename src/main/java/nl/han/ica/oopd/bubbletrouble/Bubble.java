@@ -19,7 +19,7 @@ public class Bubble extends SpriteObject implements ICollidableWithGameObjects {
 		super(sprite);
 		this.bubbleTrouble = bubbleTrouble;
 		this.bubbleSize = bubbleSize;
-		setFriction(0.05f);
+		setGravity(0.20f);
 		setySpeed(-bubbleSize / 10f);
 		setxSpeed(-bubbleSize / 8f);
 		setHeight(bubbleSize);
