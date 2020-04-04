@@ -88,7 +88,7 @@ public class BubbleTrouble extends GameEngine {
 	
     private void initializeTileMap() {
         // Load Sprites
-        Sprite floorSprite = new Sprite(MEDIA_URL + "boards-tile.jpg");
+        Sprite floorSprite = new Sprite(MEDIA_URL + "boards-tile.png");
         // Create tile types with the right Tile class and sprite
         TileType<FloorTile> floorTileType = new TileType<>(FloorTile.class, floorSprite);
 
