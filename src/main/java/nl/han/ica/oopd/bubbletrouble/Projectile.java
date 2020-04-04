@@ -9,10 +9,12 @@ import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 
+
 public class Projectile extends SpriteObject implements ICollidableWithGameObjects, ICollidableWithTiles {
 	private BubbleTrouble bubbleTrouble;
 	private Player player;
 	private int tileSize = 60;
+
 
 	public Projectile(Sprite sprite) {
 		super(sprite);
@@ -24,7 +26,6 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override

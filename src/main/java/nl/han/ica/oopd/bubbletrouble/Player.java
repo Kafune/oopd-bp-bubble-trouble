@@ -4,16 +4,18 @@ import nl.han.ica.oopg.objects.AnimatedSpriteObject;
 import nl.han.ica.oopg.objects.Sprite;
 import processing.core.PConstants;
 
-public class Player extends AnimatedSpriteObject{
+public class Player extends AnimatedSpriteObject  {
 	private BubbleTrouble bubbleTrouble;
 	private Projectile projectile;
 	final int tileSize = 60;
 	final int size = 20;
+
 	private float multiplier = 1;
 	private boolean canFire = true;
 	public void setCanFire(boolean canFire) {
 		this.canFire = canFire;
 	}
+
 
 	public Player(BubbleTrouble bubbleTrouble) {
 		super(new Sprite(bubbleTrouble.MEDIA_URL.concat("player.png")), 3);
