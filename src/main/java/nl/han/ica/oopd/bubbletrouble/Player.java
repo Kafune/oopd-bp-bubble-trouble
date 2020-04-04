@@ -6,6 +6,7 @@ import processing.core.PConstants;
 
 public class Player extends AnimatedSpriteObject{
 	private BubbleTrouble bubbleTrouble;
+	final int tileSize = 60;
 	final int size = 20;
 	public Player(BubbleTrouble bubbleTrouble) {
 		super(new Sprite(bubbleTrouble.MEDIA_URL.concat("player.png")), 3);
@@ -15,13 +16,13 @@ public class Player extends AnimatedSpriteObject{
 
 	@Override
 	public void update() {
-        if (getX() <= 0) {
+        if (getX() <= tileSize) {
             setxSpeed(0);
-            setX(0);
+            setX(tileSize);
         }
-        if (getX() >= bubbleTrouble.width - size) {
+        if (getX() >= bubbleTrouble.width - size -tileSize) {
             setxSpeed(0);
-            setX(bubbleTrouble.width - size);
+            setX(bubbleTrouble.width - size - tileSize);
         }	
         
 	}
