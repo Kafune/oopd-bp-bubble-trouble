@@ -2,10 +2,10 @@ package nl.han.ica.oopd.bubbletrouble;
 
 import java.util.List;
 
-import nl.han.ica.oopg.collision.CollidedTile;
-import nl.han.ica.oopg.collision.CollisionSide;
-import nl.han.ica.oopg.collision.ICollidableWithTiles;
-import nl.han.ica.oopg.exceptions.TileNotFoundException;
+
+import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
+import nl.han.ica.oopg.objects.GameObject;
+
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 import processing.core.PVector;
