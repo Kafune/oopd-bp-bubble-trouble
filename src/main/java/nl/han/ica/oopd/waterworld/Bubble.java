@@ -41,6 +41,7 @@ public class Bubble extends GameObject implements ICollidableWithGameObjects {
     public void update() {
         if (getY() <= 100) {
             world.deleteGameObject(this);
+            System.out.println("je kan weer vuren");
         }
     }
 

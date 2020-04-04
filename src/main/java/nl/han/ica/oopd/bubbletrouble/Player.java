@@ -6,8 +6,15 @@ import processing.core.PConstants;
 
 public class Player extends AnimatedSpriteObject{
 	private BubbleTrouble bubbleTrouble;
+	private Projectile projectile;
 	final int tileSize = 60;
 	final int size = 20;
+	private float multiplier = 1;
+	private boolean canFire = true;
+	public void setCanFire(boolean canFire) {
+		this.canFire = canFire;
+	}
+
 	public Player(BubbleTrouble bubbleTrouble) {
 		super(new Sprite(bubbleTrouble.MEDIA_URL.concat("player.png")), 3);
 		this.bubbleTrouble = bubbleTrouble;
@@ -37,9 +44,13 @@ public class Player extends AnimatedSpriteObject{
             setDirectionSpeed(90, speed);
             setCurrentFrameIndex(1);
         }
-        if (key == ' ') {
+        if (key == ' ' && canFire) {
             System.out.println("pew");
             setCurrentFrameIndex(0);
+            projectile = new Projectile(new Sprite("src/main/resources/bubble-trouble/projectile.png"));
+            bubbleTrouble.addGameObject(projectile,getX(),getY()+10);
+            canFire = false;
         }
     }
+
 }
