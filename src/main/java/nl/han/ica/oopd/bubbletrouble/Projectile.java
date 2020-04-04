@@ -7,7 +7,9 @@ import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 
-public class Projectile extends SpriteObject implements ICollidableWithGameObjects{
+public class Projectile extends SpriteObject implements ICollidableWithGameObjects {
+	private BubbleTrouble bubbleTrouble;
+	
 
 	public Projectile(Sprite sprite) {
 		super(sprite);
@@ -16,8 +18,11 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		// TODO Auto-generated method stub
-		
+		for (GameObject g : collidedGameObjects) {
+			if (g instanceof Projectile) {
+				bubbleTrouble.deleteGameObject(this);
+			}
+		}
 	}
 
 	@Override
