@@ -1,7 +1,10 @@
 package nl.han.ica.oopd.bubbletrouble;
 
 import nl.han.ica.oopg.engine.GameEngine;
+import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.TextObject;
+import nl.han.ica.oopg.tile.TileMap;
+import nl.han.ica.oopg.tile.TileType;
 import nl.han.ica.oopg.view.View;
 import nl.han.ica.oopg.dashboard.Dashboard;
 import processing.core.PApplet;
@@ -9,8 +12,14 @@ import processing.core.PApplet;
 public class BubbleTrouble extends GameEngine {
 	
 	private TextObject dashboardText;
+	private FloorTile floorTile;
 	private Bubble bubble;
 	private Player player;
+	private Terrain terrain;
+	private final int START_SCREEN = 0;
+	private final int GAME_SCREEN = 1;
+	private int currentLevel;
+	private int currentScreen;
 	
 	public static String MEDIA_URL = "src/main/resources/bubble-trouble/";
 	
@@ -21,6 +30,14 @@ public class BubbleTrouble extends GameEngine {
 		
 		PApplet.runSketch(processingArgs, bubbleTrouble);
 	}
+	
+	
+
+	public int getCurrentLevel() {
+		return currentLevel;
+	}
+
+
 
 	@Override
 	public void setupGame() {
@@ -28,10 +45,14 @@ public class BubbleTrouble extends GameEngine {
         int worldHeight = 720;
         
         createDashBoard(worldWidth, 100);
+        initializeTileMap();
+        terrain = new Terrain(this);
         
         createObjects();
-        
+
+                
         viewPortScreen(worldWidth, worldHeight);
+        currentScreen = 0;
 	}
 
 	@Override
@@ -49,6 +70,7 @@ public class BubbleTrouble extends GameEngine {
 	
 	public void viewPortScreen(int screenWidth, int screenHeight) {
 		View view = new View(screenWidth, screenHeight);
+		
 		view.setBackground(loadImage(MEDIA_URL + "startscreen.jpg"));
 		setView(view);
 		size(screenWidth, screenHeight);
@@ -60,7 +82,34 @@ public class BubbleTrouble extends GameEngine {
 	
 	private void createObjects() {
 		player = new Player(this);
-		addGameObject(player, 200, 200);
+		addGameObject(player, 500, 720 - 180 - 60); //hoogte = schermhoogte - hudhoogte - playerhoogte
 	}
+	
+	
+    private void initializeTileMap() {
+        // Load Sprites
+        Sprite floorSprite = new Sprite(MEDIA_URL + "boards-tile.jpg");
+        // Create tile types with the right Tile class and sprite
+        TileType<FloorTile> floorTileType = new TileType<>(FloorTile.class, floorSprite);
+
+        TileType[] tileTypes = {floorTileType};
+        int tileSize = 60;
+        int tilesMap[][] = {
+        		{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,},
+        		{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,},
+        		{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,},
+        		{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,},
+        		{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,},
+        		{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,},
+        		{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,},
+        		{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,},
+        		{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,},
+        		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+        		{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,},
+        		{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,},
+        };
+        tileMap = new TileMap(tileSize, tileTypes, tilesMap);
+    }
+    
 	
 }
