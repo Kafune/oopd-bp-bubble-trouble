@@ -5,40 +5,58 @@ import java.util.List;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
 import nl.han.ica.oopg.collision.ICollidableWithTiles;
+import nl.han.ica.oopg.exceptions.TileNotFoundException;
 import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 
-
 public class Projectile extends SpriteObject implements ICollidableWithGameObjects, ICollidableWithTiles {
 	private BubbleTrouble bubbleTrouble;
 	private Player player;
-	private int tileSize = 60;
+//	private Projectiletrail trail;
 
-
-	public Projectile(Sprite sprite) {
+	public Projectile(Sprite sprite, BubbleTrouble bubbleTrouble) {
 		super(sprite);
+		this.bubbleTrouble = bubbleTrouble;
+		player = new Player(bubbleTrouble);
+//		trail = new Projectiletrail(new Sprite("src/main/resources/bubble-trouble/projectiletrail.png"), bubbleTrouble);
 		setySpeed(-5f);
 		setHeight(15);
+//		trail.setHeight(35);
 		setWidth(15);
+//		trail.setWidth(20);
+
 	}
 
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		// TODO Auto-generated method stub
+		for (GameObject g : collidedGameObjects) {
+			if (g instanceof Bubble) {
+				bubbleTrouble.deleteGameObject(this);
+				player.setCanFire(true);
+			}
+		}
 	}
 
 	@Override
-	public void update() {
+  	public void update() {
+		
 	}
 
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
 		for (CollidedTile ct : collidedTiles) {
 			if (ct.getTile() instanceof FloorTile) {
-				player.setCanFire(true);
-				System.out.println("je kan weer vuren");
-				bubbleTrouble.deleteGameObject(this);
+				try {
+					bubbleTrouble.deleteGameObject(this);
+					player.setCanFire(true);
+					System.out.println(player.getCanFire());
+					
+					
+				} catch (TileNotFoundException e) {
+					e.printStackTrace();
+				}
+
 			}
 		}
 	}

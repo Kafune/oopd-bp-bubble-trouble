@@ -13,7 +13,7 @@ import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 import processing.core.PVector;
 
-public class Bubble extends SpriteObject implements ICollidableWithTiles {
+public class Bubble extends SpriteObject implements ICollidableWithTiles, ICollidableWithGameObjects {
 
 	private BubbleTrouble bubbleTrouble;
 //	private int bubbleSize;
@@ -59,7 +59,6 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles {
 						setySpeed(-getySpeed());
 						
 						setDirection(45);
-						System.out.println(getY());
 					}
 
 					if (CollisionSide.RIGHT.equals(ct.getCollisionSide())) {
@@ -75,5 +74,14 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles {
 			}
 		}
 
+	}
+
+	@Override
+	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
+		for (GameObject g : collidedGameObjects) {
+			if (g instanceof Projectile) {
+				bubbleTrouble.deleteGameObject(this);
+			}
+		}
 	}
 }
