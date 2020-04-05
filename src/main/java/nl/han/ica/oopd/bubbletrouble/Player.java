@@ -10,11 +10,8 @@ public class Player extends AnimatedSpriteObject  {
 	final int tileSize = 60;
 	final int size = 20;
 
-	private float multiplier = 1;
-	private boolean canFire = true;
-	public void setCanFire(boolean canFire) {
-		this.canFire = canFire;
-	}
+	private float speedMultiplier = 1;
+	private static boolean canFire = true;
 
 
 	public Player(BubbleTrouble bubbleTrouble) {
@@ -38,8 +35,8 @@ public class Player extends AnimatedSpriteObject  {
     @Override
     public void keyPressed(int keyCode, char key) {
         final int speed = 5;
-        if (keyCode == PConstants.LEFT) {
-            setDirectionSpeed(270, speed);
+        if (keyCode == PConstants.LEFT) { 
+             setDirectionSpeed(270, speed);
             setCurrentFrameIndex(2);
         }
         if (keyCode == PConstants.RIGHT) {
@@ -47,12 +44,21 @@ public class Player extends AnimatedSpriteObject  {
             setCurrentFrameIndex(1);
         }
         if (key == ' ' && canFire) {
-            System.out.println("pew");
+            System.out.println(canFire);
             setCurrentFrameIndex(0);
-            projectile = new Projectile(new Sprite("src/main/resources/bubble-trouble/projectile.png"));
+            projectile = new Projectile(new Sprite("src/main/resources/bubble-trouble/projectile.png"), bubbleTrouble);
+            
             bubbleTrouble.addGameObject(projectile,getX(),getY()+10);
             canFire = false;
         }
     }
+        
+	public boolean getCanFire() {
+		return canFire;
+	}
+
+	public void setCanFire(boolean canFire) {
+		Player.canFire = canFire;
+	}
 
 }

@@ -21,15 +21,13 @@ public class Terrain {
 	}
 
 	private void addBubbles() {
-
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 5; i++) {
 			b = new Bubble(64, bubbleTrouble, new Sprite("src/main/resources/bubble-trouble/bubbleblue.png"));
 			bubbles.add(b);
 		}
 
 		for (Bubble bubble : bubbles) {
 			bubbleTrouble.addGameObject(bubble, random.nextInt(1020), 400);
-			System.out.println(bubble);
 		}
 	}
 }

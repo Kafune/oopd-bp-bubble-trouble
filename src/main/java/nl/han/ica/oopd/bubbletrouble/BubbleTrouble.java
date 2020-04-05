@@ -20,6 +20,8 @@ public class BubbleTrouble extends GameEngine {
 	private final int GAME_SCREEN = 1;
 	private int currentLevel;
 	private int currentScreen;
+	
+	private int tileSize;
 
 	public static String MEDIA_URL = "src/main/resources/bubble-trouble/";
 
@@ -88,7 +90,7 @@ public class BubbleTrouble extends GameEngine {
 		TileType<FloorTile> floorTileType = new TileType<>(FloorTile.class, floorSprite);
 
 		TileType[] tileTypes = { floorTileType };
-		int tileSize = 60;
+		tileSize = 60;
 		int tilesMap[][] = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
 				{ 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, },
 				{ 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, },
@@ -102,6 +104,14 @@ public class BubbleTrouble extends GameEngine {
 				{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, },
 				{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, }, };
 		tileMap = new TileMap(tileSize, tileTypes, tilesMap);
+	}
+
+	public Bubble getBubble() {
+		return bubble;
+	}
+
+	public void setBubble(Bubble bubble) {
+		this.bubble = bubble;
 	}
 
 }
