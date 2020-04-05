@@ -16,6 +16,7 @@ public class BubbleTrouble extends GameEngine {
 	private Bubble bubble;
 	private Player player;
 	private Terrain terrain;
+	
 	private final int START_SCREEN = 0;
 	private final int GAME_SCREEN = 1;
 	private int currentLevel;
@@ -68,7 +69,6 @@ public class BubbleTrouble extends GameEngine {
 
 	public void viewPortScreen(int screenWidth, int screenHeight) {
 		View view = new View(screenWidth, screenHeight);
-
 		view.setBackground(loadImage(MEDIA_URL + "startscreen.jpg"));
 		setView(view);
 		size(screenWidth, screenHeight);

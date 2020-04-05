@@ -13,19 +13,15 @@ import nl.han.ica.oopg.objects.SpriteObject;
 public class Projectile extends SpriteObject implements ICollidableWithGameObjects, ICollidableWithTiles {
 	private BubbleTrouble bubbleTrouble;
 	private Player player;
-//	private Projectiletrail trail;
+	private Projectiletrail trail;
 
 	public Projectile(Sprite sprite, BubbleTrouble bubbleTrouble) {
 		super(sprite);
 		this.bubbleTrouble = bubbleTrouble;
 		player = new Player(bubbleTrouble);
-//		trail = new Projectiletrail(new Sprite("src/main/resources/bubble-trouble/projectiletrail.png"), bubbleTrouble);
 		setySpeed(-5f);
 		setHeight(15);
-//		trail.setHeight(35);
 		setWidth(15);
-//		trail.setWidth(20);
-
 	}
 
 	@Override
@@ -39,8 +35,8 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 	}
 
 	@Override
-  	public void update() {
-		
+	public void update() {
+
 	}
 
 	@Override
@@ -49,10 +45,10 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 			if (ct.getTile() instanceof FloorTile) {
 				try {
 					bubbleTrouble.deleteGameObject(this);
+					bubbleTrouble.deleteGameObject(trail);
 					player.setCanFire(true);
 					System.out.println(player.getCanFire());
-					
-					
+
 				} catch (TileNotFoundException e) {
 					e.printStackTrace();
 				}
