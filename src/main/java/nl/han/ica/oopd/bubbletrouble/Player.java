@@ -10,7 +10,8 @@ public class Player extends AnimatedSpriteObject  {
 	final int tileSize = 60;
 	final int size = 20;
 
-	private float speedMultiplier = 1;
+	private float speedMultiplier = 1f;
+
 	private static boolean canFire = true;
 
 
@@ -36,11 +37,11 @@ public class Player extends AnimatedSpriteObject  {
     public void keyPressed(int keyCode, char key) {
         final int speed = 5;
         if (keyCode == PConstants.LEFT) { 
-             setDirectionSpeed(270, speed);
+             setDirectionSpeed(270, speed*speedMultiplier);
             setCurrentFrameIndex(2);
         }
         if (keyCode == PConstants.RIGHT) {
-            setDirectionSpeed(90, speed);
+            setDirectionSpeed(90, speed*speedMultiplier);
             setCurrentFrameIndex(1);
         }
         if (key == ' ' && canFire) {
@@ -59,6 +60,10 @@ public class Player extends AnimatedSpriteObject  {
 
 	public void setCanFire(boolean canFire) {
 		Player.canFire = canFire;
+	}
+	
+	public void addSpeedMultiplier() {
+		this.speedMultiplier += 0.5f;
 	}
 
 }
