@@ -1,6 +1,9 @@
 package nl.han.ica.oopd.bubbletrouble;
 
+import java.util.List;
+
 import nl.han.ica.oopg.alarm.IAlarmListener;
+import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
 import nl.han.ica.oopg.collision.ICollidableWithTiles;
 import nl.han.ica.oopg.objects.Sprite;
@@ -13,6 +16,18 @@ public abstract class Powerup extends SpriteObject implements IAlarmListener , I
 		setGravity(0.1f);
 		setHeight(24);
 		setWidth(16);
+	}
+	
+	@Override
+	public void triggerAlarm(String alarmName) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
