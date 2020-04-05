@@ -17,6 +17,7 @@ public abstract class Powerup extends SpriteObject
 		implements IAlarmListener, ICollidableWithTiles, ICollidableWithGameObjects {
 	protected BubbleTrouble bubbleTrouble;
 	private Alarm alarm;
+	
 	public Powerup(Sprite sprite, BubbleTrouble bubbleTrouble) {
 
 		super(sprite);

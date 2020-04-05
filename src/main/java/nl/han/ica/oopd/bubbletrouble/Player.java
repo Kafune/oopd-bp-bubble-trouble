@@ -16,7 +16,6 @@ public class Player extends AnimatedSpriteObject  {
 	private float speedMultiplier = 1f;
 	private static boolean canFire = true;
 
-
 	public Player(BubbleTrouble bubbleTrouble) {
 		super(new Sprite(bubbleTrouble.MEDIA_URL.concat("player.png")), 3);
 		this.bubbleTrouble = bubbleTrouble;

@@ -23,6 +23,8 @@ public class BubbleTrouble extends GameEngine {
 	private int currentScreen;
 	
 	private int tileSize;
+	private boolean movespeedPowerupSpawned = false;
+	private boolean projectilePowerupSpawned = false;
 
 	public static String MEDIA_URL = "src/main/resources/bubble-trouble/";
 
@@ -114,4 +116,19 @@ public class BubbleTrouble extends GameEngine {
 		this.bubble = bubble;
 	}
 
+	public boolean isMovespeedPowerupSpawned() {
+		return movespeedPowerupSpawned;
+	}
+
+	public void setMovespeedPowerupSpawned(boolean movespeedPowerupSpawned) {
+		this.movespeedPowerupSpawned = movespeedPowerupSpawned;
+	}
+
+	public boolean isProjectilePowerupSpawned() {
+		return projectilePowerupSpawned;
+	}
+
+	public void setProjectilePowerupSpawned(boolean projectilePowerupSpawned) {
+		this.projectilePowerupSpawned = projectilePowerupSpawned;
+	}
 }
