@@ -8,6 +8,7 @@ import nl.han.ica.oopg.objects.Sprite;
 
 public class Projectiletrail extends Projectile implements ICollidableWithGameObjects {
 	private BubbleTrouble bubbleTrouble;
+
 	private Sprite sprite;
 	private int trailWidth = 10;
 	private int trailHeight = 30;
@@ -17,6 +18,7 @@ public class Projectiletrail extends Projectile implements ICollidableWithGameOb
 		super(sprite, bubbleTrouble);
 		this.sprite = sprite;
 		this.bubbleTrouble = bubbleTrouble;
+		this.projectile =  projectile;
 	}
 	
 	@Override
