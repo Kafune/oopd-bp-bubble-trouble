@@ -5,10 +5,12 @@ import nl.han.ica.oopg.objects.Sprite;
 
 public class Projectiletrail extends Projectile implements ICollidableWithGameObjects {
 	private BubbleTrouble bubbleTrouble;
+	private Projectile projectile;
 	
 	public Projectiletrail(Sprite sprite,BubbleTrouble bubbleTrouble) {
 		super(sprite, bubbleTrouble);
 		this.bubbleTrouble = bubbleTrouble;
+		this.projectile =  projectile;
 	}
 	
 	
