@@ -17,8 +17,6 @@ public class Projectiletrail extends Projectile implements ICollidableWithGameOb
 	public Projectiletrail(Sprite sprite,BubbleTrouble bubbleTrouble) {
 		super(sprite, bubbleTrouble);
 		this.sprite = sprite;
-		this.bubbleTrouble = bubbleTrouble;
-		this.projectile =  projectile;
 	}
 	
 	@Override
