@@ -1,14 +1,18 @@
 package nl.han.ica.oopd.bubbletrouble;
 
 import nl.han.ica.oopg.alarm.IAlarmListener;
+import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
+import nl.han.ica.oopg.collision.ICollidableWithTiles;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 
-public abstract class Powerup extends SpriteObject implements IAlarmListener{
+public abstract class Powerup extends SpriteObject implements IAlarmListener , ICollidableWithTiles, ICollidableWithGameObjects{
 
 	public Powerup(Sprite sprite) {
 		super(sprite);
-		// TODO Auto-generated constructor stub
+		setGravity(0.1f);
+		setHeight(24);
+		setWidth(16);
 	}
 
 }
