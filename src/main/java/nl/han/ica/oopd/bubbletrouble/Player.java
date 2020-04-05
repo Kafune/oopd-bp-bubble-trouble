@@ -14,8 +14,6 @@ public class Player extends AnimatedSpriteObject  {
 
 
 	private float speedMultiplier = 1f;
-
-
 	private static boolean canFire = true;
 
 
@@ -71,5 +69,15 @@ public class Player extends AnimatedSpriteObject  {
 	public void addSpeedMultiplier() {
 		this.speedMultiplier += 0.5f;
 	}
+
+	public Projectile getProjectile() {
+		return projectile;
+	}
+
+	public Projectiletrail getTrail() {
+		return trail;
+	}
+
+
 
 }

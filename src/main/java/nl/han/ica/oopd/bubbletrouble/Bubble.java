@@ -82,7 +82,7 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
-			if (g instanceof Projectile) {
+			if (g instanceof Projectile || g instanceof Projectiletrail) {
 				bubbleTrouble.deleteGameObject(this);
 			}
 		}
