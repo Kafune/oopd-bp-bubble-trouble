@@ -47,7 +47,7 @@ public class BubbleTrouble extends GameEngine {
 
 		createDashBoard(worldWidth, 100);
 		initializeTileMap();
-		terrain = new Terrain(this);
+		terrain = new Terrain(this, player);
 
 		createObjects();
 
@@ -81,7 +81,7 @@ public class BubbleTrouble extends GameEngine {
 	}
 
 	private void createObjects() {
-		player = new Player(this);
+		player = new Player(this, player);
 		addGameObject(player, 500, 720 - 180 - 60); // hoogte = schermhoogte - hudhoogte - playerhoogte
 	}
 
@@ -110,10 +110,6 @@ public class BubbleTrouble extends GameEngine {
 
 	public Bubble getBubble() {
 		return bubble;
-	}
-
-	public void setBubble(Bubble bubble) {
-		this.bubble = bubble;
 	}
 
 	public boolean isMovespeedPowerupSpawned() {

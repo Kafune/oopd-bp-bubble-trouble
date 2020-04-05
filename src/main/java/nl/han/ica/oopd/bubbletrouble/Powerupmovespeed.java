@@ -5,11 +5,12 @@ import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 
 public class Powerupmovespeed extends Powerup {
+	private BubbleTrouble bubbleTrouble;
 	private Player player;
-	public Powerupmovespeed(Sprite sprite, BubbleTrouble bubbleTrouble) {
+	public Powerupmovespeed(Sprite sprite, BubbleTrouble bubbleTrouble, Player player) {
 		super(sprite, bubbleTrouble);
 		this.bubbleTrouble = bubbleTrouble;
-		player = new Player(bubbleTrouble);
+		this.player = player;
 	}
 
 	@Override

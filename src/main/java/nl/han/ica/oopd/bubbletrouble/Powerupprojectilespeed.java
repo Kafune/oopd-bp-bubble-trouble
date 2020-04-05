@@ -6,10 +6,13 @@ import nl.han.ica.oopg.objects.Sprite;
 
 public class Powerupprojectilespeed extends Powerup{
 	private Projectile projectile;
-	public Powerupprojectilespeed(Sprite sprite, BubbleTrouble bubbleTrouble) {
+	private Player player; 
+	public Powerupprojectilespeed(Sprite sprite, BubbleTrouble bubbleTrouble, Player player) {
 		super(sprite, bubbleTrouble);
 		this.bubbleTrouble = bubbleTrouble;
-		projectile = new Projectile(sprite, bubbleTrouble);
+		this.player = player;
+		
+		projectile = new Projectile(sprite, bubbleTrouble, player);
 	}
 
 	@Override

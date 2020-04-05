@@ -5,8 +5,9 @@ import java.util.List;
 import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
 import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
+import nl.han.ica.oopg.objects.SpriteObject;
 
-public class Projectiletrail extends Projectile implements ICollidableWithGameObjects {
+public class Projectiletrail extends SpriteObject implements ICollidableWithGameObjects {
 	private Sprite sprite;
 	private BubbleTrouble bubbleTrouble;
 	private Projectile projectile;
@@ -15,7 +16,7 @@ public class Projectiletrail extends Projectile implements ICollidableWithGameOb
 	private float trailSpeed = 5f;
 
 	public Projectiletrail(Sprite sprite, BubbleTrouble bubbleTrouble) {
-		super(sprite, bubbleTrouble);
+		super(sprite);
 		this.bubbleTrouble = bubbleTrouble;
 		this.sprite = sprite;
 	}

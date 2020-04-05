@@ -7,18 +7,21 @@ import processing.core.PConstants;
 public class Player extends AnimatedSpriteObject  {
 	private BubbleTrouble bubbleTrouble;
 	private Projectile projectile;
+	private Powerupmovespeed powerupMoveSpeed;
 	private Projectiletrail trail;
 
 	final int tileSize = 60;
 	final int size = 20;
 
 
-	private float speedMultiplier = 1f;
+	private static float speedMultiplier = 1f;
 	private static boolean canFire = true;
 
-	public Player(BubbleTrouble bubbleTrouble) {
+	public Player(BubbleTrouble bubbleTrouble, Player player) {
 		super(new Sprite(bubbleTrouble.MEDIA_URL.concat("player.png")), 3);
 		this.bubbleTrouble = bubbleTrouble;
+		player = this;
+		
 		setFriction(0.10f);
 	}
 
@@ -47,7 +50,7 @@ public class Player extends AnimatedSpriteObject  {
         if (key == ' ' && canFire) {
             System.out.println(canFire);
             setCurrentFrameIndex(0);
-            projectile = new Projectile(new Sprite("src/main/resources/bubble-trouble/projectile.png"), bubbleTrouble);
+            projectile = new Projectile(new Sprite("src/main/resources/bubble-trouble/projectile.png"), bubbleTrouble, this);
     		trail = new Projectiletrail(new Sprite("src/main/resources/bubble-trouble/projectiletrail.png"), bubbleTrouble);
     		
     		
@@ -66,7 +69,7 @@ public class Player extends AnimatedSpriteObject  {
 	}
 	
 	public void addSpeedMultiplier() {
-		this.speedMultiplier += 0.25f;
+		Player.speedMultiplier += 0.25f;
 	}
 
 	public Projectile getProjectile() {
@@ -76,7 +79,4 @@ public class Player extends AnimatedSpriteObject  {
 	public Projectiletrail getTrail() {
 		return trail;
 	}
-
-
-
 }
