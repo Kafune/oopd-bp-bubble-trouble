@@ -23,8 +23,6 @@ public class Powerupmovespeed extends Powerup {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-
 	}
 	public void enhancePlayerSpeed() {
 		player.addSpeedMultiplier();

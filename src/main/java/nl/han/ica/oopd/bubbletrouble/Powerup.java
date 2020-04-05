@@ -2,6 +2,7 @@ package nl.han.ica.oopd.bubbletrouble;
 
 import java.util.List;
 
+import nl.han.ica.oopg.alarm.Alarm;
 import nl.han.ica.oopg.alarm.IAlarmListener;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
@@ -14,18 +15,19 @@ import processing.core.PVector;
 public abstract class Powerup extends SpriteObject
 		implements IAlarmListener, ICollidableWithTiles, ICollidableWithGameObjects {
 	protected BubbleTrouble bubbleTrouble;
+	private Alarm alarm;
 	public Powerup(Sprite sprite, BubbleTrouble bubbleTrouble) {
 		super(sprite);
 		this.bubbleTrouble = bubbleTrouble;
 		setGravity(0.1f);
 		setHeight(24);
 		setWidth(16);
+		alarm = new Alarm("vanish", 3);
 	}
 
 	@Override
 	public void triggerAlarm(String alarmName) {
-		// TODO Auto-generated method stub
-
+		bubbleTrouble.deleteGameObject(this);
 	}
 
 	@Override
@@ -38,6 +40,7 @@ public abstract class Powerup extends SpriteObject
 					setY(vector.y - getHeight());
 					setySpeed(0);
 					setGravity(0);
+					alarm.start();
 				}
 			}
 		}

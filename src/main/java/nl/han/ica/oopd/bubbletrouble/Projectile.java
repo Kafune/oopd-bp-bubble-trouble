@@ -57,4 +57,7 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 			}
 		}
 	}
+	public void addSpeedMultiplier() {
+		this.speedMultiplier += 0.25f;
+	}
 }
