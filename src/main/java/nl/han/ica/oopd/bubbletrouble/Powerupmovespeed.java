@@ -6,8 +6,9 @@ import nl.han.ica.oopg.objects.Sprite;
 
 public class Powerupmovespeed extends Powerup{
 
-	public Powerupmovespeed(Sprite sprite) {
-		super(sprite);
+	public Powerupmovespeed(Sprite sprite, BubbleTrouble bubbleTrouble) {
+		super(sprite, bubbleTrouble);
+		this.bubbleTrouble = bubbleTrouble;
 	}
 
 	@Override

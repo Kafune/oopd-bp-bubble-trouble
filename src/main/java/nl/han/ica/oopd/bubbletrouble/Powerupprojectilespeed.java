@@ -6,9 +6,9 @@ import nl.han.ica.oopg.objects.Sprite;
 
 public class Powerupprojectilespeed extends Powerup{
 
-	public Powerupprojectilespeed(Sprite sprite) {
-		super(sprite);
-		// TODO Auto-generated constructor stub
+	public Powerupprojectilespeed(Sprite sprite, BubbleTrouble bubbleTrouble) {
+		super(sprite, bubbleTrouble);
+		this.bubbleTrouble = bubbleTrouble;
 	}
 
 	@Override
