@@ -26,18 +26,19 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 	}
 
 	@Override
+	public void update() {
+
+	}
+
+	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Bubble) {
 				bubbleTrouble.deleteGameObject(this);
+				bubbleTrouble.deleteGameObject(trail);
 				player.setCanFire(true);
 			}
 		}
-	}
-
-	@Override
-	public void update() {
-
 	}
 
 	@Override
@@ -48,12 +49,9 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 					bubbleTrouble.deleteGameObject(this);
 					bubbleTrouble.deleteGameObject(trail);
 					player.setCanFire(true);
-					System.out.println(player.getCanFire());
-
 				} catch (TileNotFoundException e) {
 					e.printStackTrace();
 				}
-
 			}
 		}
 	}

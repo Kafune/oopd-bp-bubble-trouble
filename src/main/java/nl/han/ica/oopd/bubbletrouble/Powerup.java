@@ -12,11 +12,13 @@ import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 import processing.core.PVector;
 
+
 public abstract class Powerup extends SpriteObject
 		implements IAlarmListener, ICollidableWithTiles, ICollidableWithGameObjects {
 	protected BubbleTrouble bubbleTrouble;
 	private Alarm alarm;
 	public Powerup(Sprite sprite, BubbleTrouble bubbleTrouble) {
+
 		super(sprite);
 		this.bubbleTrouble = bubbleTrouble;
 		setGravity(0.1f);
