@@ -67,7 +67,7 @@ public class Player extends AnimatedSpriteObject  {
 	}
 	
 	public void addSpeedMultiplier() {
-		this.speedMultiplier += 0.5f;
+		this.speedMultiplier += 0.25f;
 	}
 
 	public Projectile getProjectile() {
