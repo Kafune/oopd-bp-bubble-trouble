@@ -17,7 +17,6 @@ import processing.core.PVector;
 public abstract class Powerup extends SpriteObject
 		implements IAlarmListener, ICollidableWithTiles, ICollidableWithGameObjects {
 	protected BubbleTrouble bubbleTrouble;
-	private Alarm alarm;
 	
 	public Powerup(Sprite sprite, BubbleTrouble bubbleTrouble) {
 
@@ -26,7 +25,6 @@ public abstract class Powerup extends SpriteObject
 		setGravity(0.1f);
 		setHeight(24);
 		setWidth(16);
-		alarm = new Alarm("vanish", 3);
 	}
 
 	@Override
@@ -47,9 +45,14 @@ public abstract class Powerup extends SpriteObject
 					setY(vector.y - getHeight());
 					setySpeed(0);
 					setGravity(0);
-					alarm.start();
+					startAlarm();
 				}
 			}
 		}
+	}
+	public void startAlarm() {
+		Alarm alarm = new Alarm("vanish", 3);
+		alarm.addTarget(this);
+		alarm.start();
 	}
 }
