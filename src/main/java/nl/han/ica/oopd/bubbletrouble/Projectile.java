@@ -33,9 +33,9 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 			if (g instanceof Bubble) {
 				// bubbleTrouble.deleteGameObject(this);
 				// bubbleTrouble.deleteGameObject(trail);
-				System.out.println("Projectiel is gebotst met bubbel -> verdwijnt weer");
-				disappear();
-				getPlayer().setCanFire(true);
+				// System.out.println("Projectiel is gebotst met bubbel -> verdwijnt weer");
+				// disappear();
+				// getPlayer().setCanFire(true);
 			}
 		}
 	}

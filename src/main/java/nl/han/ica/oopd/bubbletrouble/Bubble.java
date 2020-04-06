@@ -86,17 +86,33 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Projectile) {
-				bubbleTrouble.deleteGameObject(this);
+				Projectile projectile = (Projectile) g;
+				// bubbleTrouble.deleteGameObject(this);
+				
 				if(bubbleSize>16) {
+					System.out.println("Bubble groter dan 16: splitsen");
 					int smallerBubbleSize = bubbleSize/2;
 					Bubble newBubble1 = new Bubble(smallerBubbleSize, bubbleTrouble);
 					newBubble1.setxSpeed(-getxSpeed());
+					
+					// De twee nieuwe bubbles moeten verplaatst om te voorkomen dat ze direct weer botsen.
+					// En wellicht daardoor direct verdwijnen, omdat projectiel niet direct verdwijnt bij botsing.
+					// TODO: Mooier om in plaats hiervan nieuwe bubbels na aanmaken even tijdje 'onbotsbaar te maken'
+					// Dit via ander stukje bubble logica, dan verschieten ze niet opeens.
+					final int VERPLAATSEN_BIJ_BOTSING = 40;
+					newBubble1.setX(getX()+VERPLAATSEN_BIJ_BOTSING);
+					newBubble1.setY(getY());
 					newBubble1.setySpeed(getySpeed());
 					bubbleTrouble.addGameObject(newBubble1);
-					// Maak ook huidige bubbel kleiner.
+
+					// Maak ook de huidige bubbel kleiner.
 					bubbleSize = smallerBubbleSize;
 					setWidth(bubbleSize);
+					setX(getX()-VERPLAATSEN_BIJ_BOTSING);
+
 					setHeight(bubbleSize);
+				} else {
+					projectile.disappear();
 				}
 			}
 		}
