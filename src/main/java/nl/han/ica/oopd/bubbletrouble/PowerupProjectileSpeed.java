@@ -9,12 +9,11 @@ public class PowerupProjectileSpeed extends Powerup{
 	private ProjectileTrail trail;
 	private Player player; 
 	
-	public PowerupProjectileSpeed(Sprite sprite, BubbleTrouble bubbleTrouble, Player player) {
+	public PowerupProjectileSpeed(Sprite sprite, BubbleTrouble bubbleTrouble, Player player, Projectile projectile) {
 		super(sprite, bubbleTrouble);
 		this.bubbleTrouble = bubbleTrouble;
 		this.player = player;
-		
-		projectile = new Projectile(sprite, bubbleTrouble, player, trail);
+		this.projectile = projectile;
 	}
 
 	@Override

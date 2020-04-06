@@ -24,7 +24,7 @@ public class Terrain {
 
 	private void addBubbles() {
 		for (int i = 0; i < 5; i++) {
-			b = new Bubble(64, bubbleTrouble, new Sprite("src/main/resources/bubble-trouble/bubbleblue.png"), player);
+			b = new Bubble(64, bubbleTrouble, new Sprite("src/main/resources/bubble-trouble/bubbleblue.png"), player, player.getProjectile());
 			bubbles.add(b);
 		}
 

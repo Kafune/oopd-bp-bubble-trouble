@@ -20,18 +20,20 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 	private BubbleTrouble bubbleTrouble;
 	private Powerup powerupMovespeed;
 	private Powerup powerupProjectilespeed;
+	private Projectile projectile;
 	private Player player;
 	private Random random;
 	private int bubbleSize;
 
-	public Bubble(int bubbleSize, BubbleTrouble bubbleTrouble, Sprite sprite, Player player) {
+	public Bubble(int bubbleSize, BubbleTrouble bubbleTrouble, Sprite sprite, Player player, Projectile projectile) {
 		super(sprite);
 		this.bubbleTrouble = bubbleTrouble;
 		this.player = player;
+		this.projectile = projectile;
 		powerupMovespeed = new PowerupMoveSpeed(new Sprite("src/main/resources/bubble-trouble/movespeedpowerup.png"),
 				bubbleTrouble, player);
 		powerupProjectilespeed = new PowerupProjectileSpeed(
-				new Sprite("src/main/resources/bubble-trouble/projectilespeedpowerup.png"), bubbleTrouble, player);
+				new Sprite("src/main/resources/bubble-trouble/projectilespeedpowerup.png"), bubbleTrouble, player, projectile);
 		this.bubbleSize = bubbleSize;
 		random = new Random();
 		setGravity(0.20f);
@@ -109,7 +111,7 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 					System.out.println("Bubble groter dan 16: splitsen");
 					int smallerBubbleSize = bubbleSize / 2;
 					Bubble newBubble1 = new Bubble(smallerBubbleSize, bubbleTrouble,
-							new Sprite("src/main/resources/bubble-trouble/bubbleblue.png"), player);
+							new Sprite("src/main/resources/bubble-trouble/bubbleblue.png"), player, player.getProjectile());
 					newBubble1.setxSpeed(-getxSpeed());
 
 					// De twee nieuwe bubbles moeten verplaatst om te voorkomen dat ze direct weer

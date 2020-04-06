@@ -50,7 +50,7 @@ public class Player extends AnimatedSpriteObject  {
             System.out.println(canFire);
             setCurrentFrameIndex(0);
     		trail = new ProjectileTrail(new Sprite("src/main/resources/bubble-trouble/projectiletrail.png"), bubbleTrouble);
-            projectile = new Projectile(new Sprite("src/main/resources/bubble-trouble/projectile.png"), bubbleTrouble, this, trail);
+            projectile = new Projectile(new Sprite("src/main/resources/bubble-trouble/projectile.png"), bubbleTrouble, this);
 
     		
             bubbleTrouble.addGameObject(projectile, getX(), getY() + 10);
