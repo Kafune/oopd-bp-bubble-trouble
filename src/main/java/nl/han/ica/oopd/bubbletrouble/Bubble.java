@@ -110,7 +110,7 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 					bubbleTrouble.addGameObject(newBubble1);
 
 					// Maak ook de huidige bubbel kleiner.
-					bubbleSize = smallerBubbleSize;
+					this.bubbleSize = smallerBubbleSize;
 					setWidth(bubbleSize);
 					setX(getX()-VERPLAATSEN_BIJ_BOTSING);
 
@@ -118,9 +118,6 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 				} else {
 					bubbleTrouble.deleteGameObject(this);
 				}
-				
-				
-				
 				
 				
 //				if (bubbleTrouble.isMovespeedPowerupSpawned() == false) {
