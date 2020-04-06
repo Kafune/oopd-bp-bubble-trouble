@@ -17,6 +17,7 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 	private static float speedMultiplier = 1f;
 
 	public Projectile(Sprite sprite, BubbleTrouble bubbleTrouble, Player player, ProjectileTrail trail) {
+
 		super(sprite);
 		this.bubbleTrouble = bubbleTrouble;
 		this.player = player;

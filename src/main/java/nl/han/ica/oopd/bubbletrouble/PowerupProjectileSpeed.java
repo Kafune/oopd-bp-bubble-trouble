@@ -29,7 +29,7 @@ public class PowerupProjectileSpeed extends Powerup{
 	public void update() {
 	}
 	private void enhanceSpeed() {
-		projectile.addSpeedMultiplier();
+//		projectile.addSpeedMultiplier(); //TODO: projectiel gaat sneller naar boven wanneer dit opgepakt is.
 		bubbleTrouble.deleteGameObject(this);
 	}
 
