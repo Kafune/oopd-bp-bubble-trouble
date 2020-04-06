@@ -2,6 +2,7 @@ package nl.han.ica.oopd.bubbletrouble;
 
 import java.util.List;
 
+import nl.han.ica.oopd.waterworld.BubbleSpawner;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
 import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
@@ -11,17 +12,19 @@ import nl.han.ica.oopg.objects.GameObject;
 
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
+import processing.core.PGraphics;
 import processing.core.PVector;
 
 public class Bubble extends SpriteObject implements ICollidableWithTiles, ICollidableWithGameObjects {
 
 	private BubbleTrouble bubbleTrouble;
-//	private int bubbleSize;
+	private int bubbleSize;
+	static Sprite bubbleSprite = new Sprite("src/main/resources/bubble-trouble/bubbleblue.png");
 
-	public Bubble(int bubbleSize, BubbleTrouble bubbleTrouble, Sprite sprite) {
-		super(sprite);
+	public Bubble(int bubbleSize, BubbleTrouble bubbleTrouble) {
+		super(bubbleSprite);
 		this.bubbleTrouble = bubbleTrouble;
-//		this.bubbleSize = bubbleSize;
+		this.bubbleSize = bubbleSize;
 		setGravity(0.20f);
 		setySpeed(-bubbleSize / 10f);
 		setxSpeed(-bubbleSize / 8f);
@@ -82,9 +85,28 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
-			if (g instanceof Projectile || g instanceof Projectiletrail) {
+			if (g instanceof Projectile) {
 				bubbleTrouble.deleteGameObject(this);
+				if(bubbleSize>16) {
+					int smallerBubbleSize = bubbleSize/2;
+					Bubble newBubble1 = new Bubble(smallerBubbleSize, bubbleTrouble);
+					newBubble1.setxSpeed(-getxSpeed());
+					newBubble1.setySpeed(getySpeed());
+					bubbleTrouble.addGameObject(newBubble1);
+					// Maak ook huidige bubbel kleiner.
+					bubbleSize = smallerBubbleSize;
+					setWidth(bubbleSize);
+					setHeight(bubbleSize);
+				}
 			}
 		}
+	}
+
+	@Override
+	public void draw(PGraphics g) {
+		//g.fill(120, 120, 230);
+		//g.ellipse(x, y, bubbleSize, bubbleSize);
+		g.image(getImage(), x, y, getWidth(), getHeight());
+
 	}
 }

@@ -253,7 +253,15 @@ public abstract class GameEngine extends PApplet {
     /**
      * Delete all GameObjects from the GameEngine.
      */
+    @Deprecated
     public void deleteAllGameOBjects() {
+        deleteAllGameObjects();
+    }
+
+    /**
+     * Delete all GameObjects from the GameEngine.
+     */
+    public void deleteAllGameObjects() {
         gameObjects.removeAllElements();
     }
 

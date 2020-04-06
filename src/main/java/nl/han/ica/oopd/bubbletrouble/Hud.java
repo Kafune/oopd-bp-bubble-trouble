@@ -1,6 +1,6 @@
 package nl.han.ica.oopd.bubbletrouble;
 
-public class HUD {
+public class Hud {
 	private Lives lives;
 
 }

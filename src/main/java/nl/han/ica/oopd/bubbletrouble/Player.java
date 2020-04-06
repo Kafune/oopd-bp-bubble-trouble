@@ -7,20 +7,23 @@ import processing.core.PConstants;
 public class Player extends AnimatedSpriteObject  {
 	private BubbleTrouble bubbleTrouble;
 	private Projectile projectile;
-	private Projectiletrail trail;
+	private ProjectileTrail trail;
 
 	final int tileSize = 60;
 	final int size = 20;
-
 
 	private float speedMultiplier = 1f;
 	private static boolean canFire = true;
 
 
 	public Player(BubbleTrouble bubbleTrouble) {
-		super(new Sprite(bubbleTrouble.MEDIA_URL.concat("player.png")), 3);
+		super(new Sprite(BubbleTrouble.MEDIA_URL.concat("player.png")), 3);
 		this.bubbleTrouble = bubbleTrouble;
 		setFriction(0.10f);
+		
+        projectile = new Projectile(new Sprite("src/main/resources/bubble-trouble/projectile.png"), bubbleTrouble);
+
+        bubbleTrouble.addGameObject(projectile);
 	}
 
 	@Override
@@ -34,6 +37,7 @@ public class Player extends AnimatedSpriteObject  {
             setX(bubbleTrouble.width - size - tileSize);
         }        
 	}
+	
     @Override
     public void keyPressed(int keyCode, char key) {
         final int speed = 5;
@@ -45,16 +49,12 @@ public class Player extends AnimatedSpriteObject  {
             setDirectionSpeed(90, speed*speedMultiplier);
             setCurrentFrameIndex(1);
         }
-        if (key == ' ' && canFire) {
-            System.out.println(canFire);
+        if (key == ' ' /* && canFire */) {
             setCurrentFrameIndex(0);
-            projectile = new Projectile(new Sprite("src/main/resources/bubble-trouble/projectile.png"), bubbleTrouble);
-    		trail = new Projectiletrail(new Sprite("src/main/resources/bubble-trouble/projectiletrail.png"), bubbleTrouble);
-    		
-    		
-    		bubbleTrouble.addGameObject(trail, getX() + (getWidth() / 2), getY()+10);
-            bubbleTrouble.addGameObject(projectile,getX(), getY()+10);
-            canFire = false;
+            float playerX = getX();
+            float playerY = getY();
+            projectile.fire(playerX, playerY);
+            // canFire = false;
         }
     }
         
@@ -74,7 +74,7 @@ public class Player extends AnimatedSpriteObject  {
 		return projectile;
 	}
 
-	public Projectiletrail getTrail() {
+	public ProjectileTrail getTrail() {
 		return trail;
 	}
 

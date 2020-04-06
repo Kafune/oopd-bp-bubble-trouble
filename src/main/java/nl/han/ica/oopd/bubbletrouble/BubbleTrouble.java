@@ -27,7 +27,6 @@ public class BubbleTrouble extends GameEngine {
 	public static String MEDIA_URL = "src/main/resources/bubble-trouble/";
 
 	public static void main(String[] args) {
-//		PApplet.main(new String[] { "nl.han.ica.oopd.bubbletrouble.BubbleTrouble" });
 		String[] processingArgs = { "nl.han.ica.oopd.bubbletrouble.BubbleTrouble" };
 		BubbleTrouble bubbleTrouble = new BubbleTrouble();
 
@@ -86,23 +85,26 @@ public class BubbleTrouble extends GameEngine {
 	private void initializeTileMap() {
 		// Load Sprites
 		Sprite floorSprite = new Sprite(MEDIA_URL + "boards-tile.png");
+		
 		// Create tile types with the right Tile class and sprite
 		TileType<FloorTile> floorTileType = new TileType<>(FloorTile.class, floorSprite);
 
 		TileType[] tileTypes = { floorTileType };
 		tileSize = 60;
-		int tilesMap[][] = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
-				{ 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, },
-				{ 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, },
-				{ 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, },
-				{ 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, },
-				{ 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, },
-				{ 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, },
-				{ 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, },
-				{ 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
+		int tilesMap[][] = {
+				{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, },
+				{  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0, },
+				{  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0, },
+				{  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0, },
+				{  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0, },
+				{  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0, },
+				{  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0, },
+				{  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0, },
+				{  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0, },
+				{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, },
 				{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, },
-				{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, }, };
+				{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, }
+			};
 		tileMap = new TileMap(tileSize, tileTypes, tilesMap);
 	}
 
@@ -112,6 +114,10 @@ public class BubbleTrouble extends GameEngine {
 
 	public void setBubble(Bubble bubble) {
 		this.bubble = bubble;
+	}
+
+	public Player getPlayer() {
+		return player;
 	}
 
 }

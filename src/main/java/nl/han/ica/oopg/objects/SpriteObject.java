@@ -27,8 +27,7 @@ public abstract class SpriteObject extends GameObject {
 	 * Draws the image on the PGraphics object, this is fired by the GameEngine.
 	 */
 	@Override
-	public void draw(PGraphics g)
-	{
+	public void draw(PGraphics g) {
 		g.image(sprite.getPImage(), x, y);
 	}
 	
@@ -36,8 +35,7 @@ public abstract class SpriteObject extends GameObject {
 	 * Get the PImage of the Sprite.
 	 * @return PImage
 	 */
-	public PImage getImage()
-	{
+	public PImage getImage() {
 		return sprite.getPImage();
 	}
 }

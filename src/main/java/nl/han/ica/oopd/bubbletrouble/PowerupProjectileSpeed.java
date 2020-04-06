@@ -4,19 +4,21 @@ import java.util.List;
 import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 
-public class Powerupmovespeed extends Powerup {
-	private Player player;
-	public Powerupmovespeed(Sprite sprite, BubbleTrouble bubbleTrouble) {
+public class PowerupProjectileSpeed extends Powerup {
+
+	private Projectile projectile;
+	
+	public PowerupProjectileSpeed(Sprite sprite, BubbleTrouble bubbleTrouble) {
 		super(sprite, bubbleTrouble);
 		this.bubbleTrouble = bubbleTrouble;
-		player = new Player(bubbleTrouble);
+		projectile = new Projectile(sprite, bubbleTrouble);
 	}
 
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
-				enhancePlayerSpeed();
+				enhanceProjectileSpeed();
 			}
 		}
 	}
@@ -24,8 +26,9 @@ public class Powerupmovespeed extends Powerup {
 	@Override
 	public void update() {
 	}
-	public void enhancePlayerSpeed() {
-		player.addSpeedMultiplier();
+	private void enhanceProjectileSpeed() {
+		projectile.addSpeedMultiplier();
 		bubbleTrouble.deleteGameObject(this);
 	}
+
 }
