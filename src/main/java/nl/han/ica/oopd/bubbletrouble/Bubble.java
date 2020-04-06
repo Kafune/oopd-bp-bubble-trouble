@@ -16,7 +16,7 @@ import processing.core.PVector;
 public class Bubble extends SpriteObject implements ICollidableWithTiles, ICollidableWithGameObjects {
 
 	private BubbleTrouble bubbleTrouble;
-	private Powerupmovespeed powerupMovespeed;
+	private Powerup powerupMovespeed;
 	private Player player;
 //	private int bubbleSize;
 
@@ -24,6 +24,8 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 		super(sprite);
 		this.bubbleTrouble = bubbleTrouble;
 		this.player = player;
+		powerupMovespeed = new Powerupmovespeed(new Sprite("src/main/resources/bubble-trouble/movespeedpowerup.png"),
+				bubbleTrouble, player);
 //		this.bubbleSize = bubbleSize;
 		setGravity(0.20f);
 		setySpeed(-bubbleSize / 10f);
@@ -88,8 +90,6 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 			if (g instanceof Projectile || g instanceof Projectiletrail) {
 				bubbleTrouble.deleteGameObject(this);
 				if (bubbleTrouble.isMovespeedPowerupSpawned() == false) {
-					powerupMovespeed = new Powerupmovespeed(new Sprite("src/main/resources/bubble-trouble/movespeedpowerup.png"),
-							bubbleTrouble, player);
 					bubbleTrouble.addGameObject(powerupMovespeed, getX(), getY() + 10);
 					bubbleTrouble.setMovespeedPowerupSpawned(true);
 				}

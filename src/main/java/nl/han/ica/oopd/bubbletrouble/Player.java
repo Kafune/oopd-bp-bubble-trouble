@@ -7,7 +7,7 @@ import processing.core.PConstants;
 public class Player extends AnimatedSpriteObject  {
 	private BubbleTrouble bubbleTrouble;
 	private Projectile projectile;
-	private Powerupmovespeed powerupMoveSpeed;
+//	private Powerup powerupMoveSpeed;
 	private Projectiletrail trail;
 
 	final int tileSize = 60;
@@ -17,10 +17,9 @@ public class Player extends AnimatedSpriteObject  {
 	private static float speedMultiplier = 1f;
 	private static boolean canFire = true;
 
-	public Player(BubbleTrouble bubbleTrouble, Player player) {
+	public Player(BubbleTrouble bubbleTrouble) {
 		super(new Sprite(bubbleTrouble.MEDIA_URL.concat("player.png")), 3);
 		this.bubbleTrouble = bubbleTrouble;
-		player = this;
 		
 		setFriction(0.10f);
 	}

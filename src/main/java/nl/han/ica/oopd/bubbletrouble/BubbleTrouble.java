@@ -81,7 +81,7 @@ public class BubbleTrouble extends GameEngine {
 	}
 
 	private void createObjects() {
-		player = new Player(this, player);
+		player = new Player(this);
 		addGameObject(player, 500, 720 - 180 - 60); // hoogte = schermhoogte - hudhoogte - playerhoogte
 	}
 
