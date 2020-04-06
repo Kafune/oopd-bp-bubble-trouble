@@ -82,9 +82,9 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 						if (bubbleSize == 64) {
 							setX(vector.x + getWidth());
 						} else if (bubbleSize == 32) {
-							setX(vector.x + getWidth()+25);
+							setX(vector.x + getWidth()+32);
 						} else if (bubbleSize == 16) {
-							setX(vector.x + getWidth()+50);
+							setX(vector.x + getWidth()+64);
 						}
 						setxSpeed(-getxSpeed());
 						setDirection(15);
