@@ -19,7 +19,7 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 	private Powerup powerupMovespeed;
 	private Powerup powerupProjectilespeed;
 	private Player player;
-//	private int bubbleSize;
+	private int bubbleSize;
 
 	public Bubble(int bubbleSize, BubbleTrouble bubbleTrouble, Sprite sprite, Player player) {
 		super(sprite);
@@ -28,7 +28,7 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 		powerupMovespeed = new PowerupMoveSpeed(new Sprite("src/main/resources/bubble-trouble/movespeedpowerup.png"),
 				bubbleTrouble, player);
 		powerupProjectilespeed = new PowerupProjectileSpeed(new Sprite("src/main/resources/bubble-trouble/projectilespeedpowerup.png"), bubbleTrouble, player);
-//		this.bubbleSize = bubbleSize;
+		this.bubbleSize = bubbleSize;
 		setGravity(0.20f);
 		setySpeed(-bubbleSize / 10f);
 		setxSpeed(-bubbleSize / 8f);
@@ -90,7 +90,39 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Projectile || g instanceof ProjectileTrail) {
-				bubbleTrouble.deleteGameObject(this);
+//				Projectile projectile = (Projectile) g;
+				// bubbleTrouble.deleteGameObject(this);
+				
+				if(bubbleSize>16) {
+					System.out.println("Bubble groter dan 16: splitsen");
+					int smallerBubbleSize = bubbleSize/2;
+					Bubble newBubble1 = new Bubble(smallerBubbleSize, bubbleTrouble, new Sprite("src/main/resources/bubble-trouble/bubbleblue.png"), player);
+					newBubble1.setxSpeed(-getxSpeed());
+					
+					// De twee nieuwe bubbles moeten verplaatst om te voorkomen dat ze direct weer botsen.
+					// En wellicht daardoor direct verdwijnen, omdat projectiel niet direct verdwijnt bij botsing.
+					// TODO: Mooier om in plaats hiervan nieuwe bubbels na aanmaken even tijdje 'onbotsbaar te maken'
+					// Dit via ander stukje bubble logica, dan verschieten ze niet opeens.
+					final int VERPLAATSEN_BIJ_BOTSING = 40;
+					newBubble1.setX(getX()+VERPLAATSEN_BIJ_BOTSING);
+					newBubble1.setY(getY());
+					newBubble1.setySpeed(getySpeed());
+					bubbleTrouble.addGameObject(newBubble1);
+
+					// Maak ook de huidige bubbel kleiner.
+					bubbleSize = smallerBubbleSize;
+					setWidth(bubbleSize);
+					setX(getX()-VERPLAATSEN_BIJ_BOTSING);
+
+					setHeight(bubbleSize);
+				} else {
+					bubbleTrouble.deleteGameObject(this);
+				}
+				
+				
+				
+				
+				
 //				if (bubbleTrouble.isMovespeedPowerupSpawned() == false) {
 //					bubbleTrouble.addGameObject(powerupMovespeed, getX(), getY() + 10);
 //					bubbleTrouble.setMovespeedPowerupSpawned(true);
