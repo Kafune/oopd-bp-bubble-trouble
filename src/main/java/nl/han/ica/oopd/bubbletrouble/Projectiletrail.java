@@ -11,7 +11,6 @@ public class Projectiletrail extends SpriteObject implements ICollidableWithGame
 	private Sprite sprite;
 	private BubbleTrouble bubbleTrouble;
 	private Projectile projectile;
-	private int trailWidth = 10;
 	private int trailHeight = 30;
 	private float trailSpeed = 5f;
 
@@ -23,9 +22,9 @@ public class Projectiletrail extends SpriteObject implements ICollidableWithGame
 
 	@Override
 	public void update() {
-		trailHeight += trailSpeed;
-		sprite.resize(trailWidth, trailHeight);
 		setHeight(trailHeight);
+		trailHeight += trailSpeed;
+		
 	}
 
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {

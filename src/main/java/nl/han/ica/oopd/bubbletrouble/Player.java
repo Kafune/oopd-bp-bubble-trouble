@@ -53,10 +53,11 @@ public class Player extends AnimatedSpriteObject  {
     		trail = new Projectiletrail(new Sprite("src/main/resources/bubble-trouble/projectiletrail.png"), bubbleTrouble);
     		
     		
-    		bubbleTrouble.addGameObject(trail, getX() + (getWidth() / 2), getY()+10);
-            bubbleTrouble.addGameObject(projectile,getX(), getY()+10);
+            bubbleTrouble.addGameObject(projectile, getX(), getY() + 10);
+    		bubbleTrouble.addGameObject(trail, getX() + (getWidth() / 2), projectile.getY() - (getHeight()));
+    		System.out.println(trail.getHeight());
+
             canFire = false;
-            System.out.println(speedMultiplier);
         }
     }
         
