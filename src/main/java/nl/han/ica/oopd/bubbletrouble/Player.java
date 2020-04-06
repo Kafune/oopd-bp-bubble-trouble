@@ -49,12 +49,13 @@ public class Player extends AnimatedSpriteObject  {
         if (key == ' ' && canFire) {
             System.out.println(canFire);
             setCurrentFrameIndex(0);
-            projectile = new Projectile(new Sprite("src/main/resources/bubble-trouble/projectile.png"), bubbleTrouble, this);
     		trail = new ProjectileTrail(new Sprite("src/main/resources/bubble-trouble/projectiletrail.png"), bubbleTrouble);
+            projectile = new Projectile(new Sprite("src/main/resources/bubble-trouble/projectile.png"), bubbleTrouble, this);
+
     		
     		
             bubbleTrouble.addGameObject(projectile, getX(), getY() + 10);
-    		bubbleTrouble.addGameObject(trail, getX() + (getWidth() / 2), projectile.getY() - (getHeight()));
+    		bubbleTrouble.addGameObject(trail, getX() + (getWidth() / 2), projectile.getY());
     		System.out.println(trail.getHeight());
 
             canFire = false;

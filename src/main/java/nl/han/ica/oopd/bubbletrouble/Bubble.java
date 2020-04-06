@@ -160,6 +160,5 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 		// g.fill(120, 120, 230);
 		// g.ellipse(x, y, bubbleSize, bubbleSize);
 		g.image(getImage(), x, y, getWidth(), getHeight());
-
 	}
 }
