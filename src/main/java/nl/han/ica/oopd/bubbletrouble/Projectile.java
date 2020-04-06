@@ -13,7 +13,7 @@ import nl.han.ica.oopg.objects.SpriteObject;
 public class Projectile extends SpriteObject implements ICollidableWithGameObjects, ICollidableWithTiles {
 	private BubbleTrouble bubbleTrouble;
 	private Player player;
-	private Projectiletrail trail;
+	private ProjectileTrail trail;
 	private float speedMultiplier = 1f;
 
 	public Projectile(Sprite sprite, BubbleTrouble bubbleTrouble, Player player) {

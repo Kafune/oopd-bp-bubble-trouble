@@ -7,14 +7,14 @@ import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 
-public class Projectiletrail extends SpriteObject implements ICollidableWithGameObjects {
+public class ProjectileTrail extends SpriteObject implements ICollidableWithGameObjects {
 	private Sprite sprite;
 	private BubbleTrouble bubbleTrouble;
 	private Projectile projectile;
 	private int trailHeight = 30;
-	private float trailSpeed = 5f;
+	private float trailSpeed = -5f;
 
-	public Projectiletrail(Sprite sprite, BubbleTrouble bubbleTrouble) {
+	public ProjectileTrail(Sprite sprite, BubbleTrouble bubbleTrouble) {
 		super(sprite);
 		this.bubbleTrouble = bubbleTrouble;
 		this.sprite = sprite;

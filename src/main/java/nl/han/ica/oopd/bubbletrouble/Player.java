@@ -8,7 +8,7 @@ public class Player extends AnimatedSpriteObject  {
 	private BubbleTrouble bubbleTrouble;
 	private Projectile projectile;
 //	private Powerup powerupMoveSpeed;
-	private Projectiletrail trail;
+	private ProjectileTrail trail;
 
 	final int tileSize = 60;
 	final int size = 20;
@@ -50,7 +50,7 @@ public class Player extends AnimatedSpriteObject  {
             System.out.println(canFire);
             setCurrentFrameIndex(0);
             projectile = new Projectile(new Sprite("src/main/resources/bubble-trouble/projectile.png"), bubbleTrouble, this);
-    		trail = new Projectiletrail(new Sprite("src/main/resources/bubble-trouble/projectiletrail.png"), bubbleTrouble);
+    		trail = new ProjectileTrail(new Sprite("src/main/resources/bubble-trouble/projectiletrail.png"), bubbleTrouble);
     		
     		
             bubbleTrouble.addGameObject(projectile, getX(), getY() + 10);
@@ -77,7 +77,7 @@ public class Player extends AnimatedSpriteObject  {
 		return projectile;
 	}
 
-	public Projectiletrail getTrail() {
+	public ProjectileTrail getTrail() {
 		return trail;
 	}
 }

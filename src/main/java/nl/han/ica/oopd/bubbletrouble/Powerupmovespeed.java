@@ -4,10 +4,10 @@ import java.util.List;
 import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 
-public class Powerupmovespeed extends Powerup {
+public class PowerupMoveSpeed extends Powerup {
 	private BubbleTrouble bubbleTrouble;
 	private Player player;
-	public Powerupmovespeed(Sprite sprite, BubbleTrouble bubbleTrouble, Player player) {
+	public PowerupMoveSpeed(Sprite sprite, BubbleTrouble bubbleTrouble, Player player) {
 		super(sprite, bubbleTrouble);
 		this.bubbleTrouble = bubbleTrouble;
 		this.player = player;

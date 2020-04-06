@@ -25,9 +25,9 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 		super(sprite);
 		this.bubbleTrouble = bubbleTrouble;
 		this.player = player;
-		powerupMovespeed = new Powerupmovespeed(new Sprite("src/main/resources/bubble-trouble/movespeedpowerup.png"),
+		powerupMovespeed = new PowerupMoveSpeed(new Sprite("src/main/resources/bubble-trouble/movespeedpowerup.png"),
 				bubbleTrouble, player);
-		powerupProjectilespeed = new Powerupprojectilespeed(new Sprite("src/main/resources/bubble-trouble/projectilespeedpowerup.png"), bubbleTrouble, player);
+		powerupProjectilespeed = new PowerupProjectileSpeed(new Sprite("src/main/resources/bubble-trouble/projectilespeedpowerup.png"), bubbleTrouble, player);
 //		this.bubbleSize = bubbleSize;
 		setGravity(0.20f);
 		setySpeed(-bubbleSize / 10f);
@@ -89,7 +89,7 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
-			if (g instanceof Projectile || g instanceof Projectiletrail) {
+			if (g instanceof Projectile || g instanceof ProjectileTrail) {
 				bubbleTrouble.deleteGameObject(this);
 //				if (bubbleTrouble.isMovespeedPowerupSpawned() == false) {
 //					bubbleTrouble.addGameObject(powerupMovespeed, getX(), getY() + 10);
