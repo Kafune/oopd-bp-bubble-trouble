@@ -19,7 +19,7 @@ public class Powerupprojectilespeed extends Powerup{
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
-				enhanceProjectileSpeed();
+				enhanceSpeed();
 			}
 		}
 	}
@@ -27,7 +27,7 @@ public class Powerupprojectilespeed extends Powerup{
 	@Override
 	public void update() {
 	}
-	private void enhanceProjectileSpeed() {
+	private void enhanceSpeed() {
 		projectile.addSpeedMultiplier();
 		bubbleTrouble.deleteGameObject(this);
 	}

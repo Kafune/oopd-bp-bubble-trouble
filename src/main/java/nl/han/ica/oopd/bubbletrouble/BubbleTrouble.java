@@ -47,9 +47,11 @@ public class BubbleTrouble extends GameEngine {
 
 		createDashBoard(worldWidth, 100);
 		initializeTileMap();
+		createObjects();
+		
 		terrain = new Terrain(this, player);
 
-		createObjects();
+		
 
 		viewPortScreen(worldWidth, worldHeight);
 		currentScreen = 0;

@@ -17,6 +17,7 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 
 	private BubbleTrouble bubbleTrouble;
 	private Powerup powerupMovespeed;
+	private Powerup powerupProjectilespeed;
 	private Player player;
 //	private int bubbleSize;
 
@@ -26,6 +27,7 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 		this.player = player;
 		powerupMovespeed = new Powerupmovespeed(new Sprite("src/main/resources/bubble-trouble/movespeedpowerup.png"),
 				bubbleTrouble, player);
+		powerupProjectilespeed = new Powerupprojectilespeed(new Sprite("src/main/resources/bubble-trouble/projectilespeedpowerup.png"), bubbleTrouble, player);
 //		this.bubbleSize = bubbleSize;
 		setGravity(0.20f);
 		setySpeed(-bubbleSize / 10f);
@@ -89,12 +91,16 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Projectile || g instanceof Projectiletrail) {
 				bubbleTrouble.deleteGameObject(this);
-				if (bubbleTrouble.isMovespeedPowerupSpawned() == false) {
-					bubbleTrouble.addGameObject(powerupMovespeed, getX(), getY() + 10);
-					bubbleTrouble.setMovespeedPowerupSpawned(true);
+//				if (bubbleTrouble.isMovespeedPowerupSpawned() == false) {
+//					bubbleTrouble.addGameObject(powerupMovespeed, getX(), getY() + 10);
+//					bubbleTrouble.setMovespeedPowerupSpawned(true);
+//				}
+				if (bubbleTrouble.isProjectilePowerupSpawned() == false) {
+					bubbleTrouble.addGameObject(powerupProjectilespeed, getX(), getY() + 10);
+					bubbleTrouble.setProjectilePowerupSpawned(true);
 				}
 			} else if (g instanceof Bubble) {
-				//bubble
+				// bubble
 			}
 		}
 	}

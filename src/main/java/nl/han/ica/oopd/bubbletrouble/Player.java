@@ -14,7 +14,7 @@ public class Player extends AnimatedSpriteObject  {
 	final int size = 20;
 
 
-	private static float speedMultiplier = 1f;
+	private float speedMultiplier = 1f;
 	private static boolean canFire = true;
 
 	public Player(BubbleTrouble bubbleTrouble) {
@@ -56,6 +56,7 @@ public class Player extends AnimatedSpriteObject  {
     		bubbleTrouble.addGameObject(trail, getX() + (getWidth() / 2), getY()+10);
             bubbleTrouble.addGameObject(projectile,getX(), getY()+10);
             canFire = false;
+            System.out.println(speedMultiplier);
         }
     }
         
@@ -68,7 +69,7 @@ public class Player extends AnimatedSpriteObject  {
 	}
 	
 	public void addSpeedMultiplier() {
-		Player.speedMultiplier += 0.25f;
+		this.speedMultiplier += 0.25f;
 	}
 
 	public Projectile getProjectile() {
