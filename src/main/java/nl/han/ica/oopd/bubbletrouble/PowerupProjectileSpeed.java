@@ -18,7 +18,7 @@ public class PowerupProjectileSpeed extends Powerup{
 
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		for (GameObject g : collidedGameObjects) {
+		for (GameObject g : collidedGameObjects) { 
 			if (g instanceof Player) {
 				enhanceSpeed();
 			}

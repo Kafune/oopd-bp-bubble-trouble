@@ -16,7 +16,7 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 	private ProjectileTrail trail;
 	private static float speedMultiplier = 1f;
 
-	public Projectile(Sprite sprite, BubbleTrouble bubbleTrouble, Player player) {
+	public Projectile(Sprite sprite, BubbleTrouble bubbleTrouble, Player player, ProjectileTrail trail) {
 		super(sprite);
 		this.bubbleTrouble = bubbleTrouble;
 		this.player = player;
@@ -49,6 +49,7 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 				try {
 					bubbleTrouble.deleteGameObject(this);
 					bubbleTrouble.deleteGameObject(trail);
+					
 					player.setCanFire(true);
 				} catch (TileNotFoundException e) {
 					e.printStackTrace();
