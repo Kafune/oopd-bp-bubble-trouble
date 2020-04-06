@@ -49,10 +49,11 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 	 * @param x
 	 * @param y
 	 */
-	public void fire(float x, float y) {
-		float projectileX = x;
-        float projectileY = y;
-        float trailX = x + getWidth()/2;
+	public void fire() {
+		float projectileX = getPlayer().getX();
+        float projectileY = getPlayer().getY();
+        
+        float trailX = x + getWidth()/2+10;
         float trailY = projectileY;
 		
         trail.setX(trailX);

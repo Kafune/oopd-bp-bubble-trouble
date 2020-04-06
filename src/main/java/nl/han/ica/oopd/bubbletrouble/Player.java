@@ -51,9 +51,7 @@ public class Player extends AnimatedSpriteObject  {
         }
         if (key == ' ' /* && canFire */) {
             setCurrentFrameIndex(0);
-            float playerX = getX();
-            float playerY = getY();
-            projectile.fire(playerX, playerY);
+            projectile.fire();
             // canFire = false;
         }
     }

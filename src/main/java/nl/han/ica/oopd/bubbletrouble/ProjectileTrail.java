@@ -55,8 +55,12 @@ public class ProjectileTrail extends SpriteObject implements ICollidableWithGame
 	}
 
 	@Override
+	/** 
+	 * Override van standaard draw methode, om de (geresizede) sprite vanaf lagere y positie te tekenen.
+	 **/
 	public void draw(PGraphics g) {
-		g.image(getImage(), x, y-trailHeight);
+		float trailY = y-trailHeight;
+		g.image(getImage(), x, trailY);
 	}
 	
 }
