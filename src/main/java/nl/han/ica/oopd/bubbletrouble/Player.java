@@ -15,7 +15,7 @@ public class Player extends AnimatedSpriteObject  {
 
 
 	private float speedMultiplier = 1f;
-	private static boolean canFire = true;
+	private boolean canFire = true;
 
 	public Player(BubbleTrouble bubbleTrouble) {
 		super(new Sprite(bubbleTrouble.MEDIA_URL.concat("player.png")), 3);
@@ -66,7 +66,7 @@ public class Player extends AnimatedSpriteObject  {
 	}
 
 	public void setCanFire(boolean canFire) {
-		Player.canFire = canFire;
+		this.canFire = canFire;
 	}
 	
 	public void addSpeedMultiplier() {
