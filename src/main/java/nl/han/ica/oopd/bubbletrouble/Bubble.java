@@ -78,7 +78,14 @@ public class Bubble extends SpriteObject implements ICollidableWithTiles, IColli
 
 					if (CollisionSide.RIGHT.equals(ct.getCollisionSide())) {
 						vector = bubbleTrouble.getTileMap().getTilePixelLocation(ct.getTile());
-						setX(vector.x + getWidth() + 10);
+						System.out.println(bubbleSize);
+						if (bubbleSize == 64) {
+							setX(vector.x + getWidth());
+						} else if (bubbleSize == 32) {
+							setX(vector.x + getWidth()+25);
+						} else if (bubbleSize == 16) {
+							setX(vector.x + getWidth()+50);
+						}
 						setxSpeed(-getxSpeed());
 						setDirection(15);
 					}
