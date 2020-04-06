@@ -18,6 +18,9 @@ public class ProjectileTrail extends SpriteObject implements ICollidableWithGame
 		super(sprite);
 		this.bubbleTrouble = bubbleTrouble;
 		this.sprite = sprite;
+		setHeight(trailHeight);
+		setY(getY()+trailHeight);
+		setySpeed(trailSpeed);
 	}
 
 	@Override
